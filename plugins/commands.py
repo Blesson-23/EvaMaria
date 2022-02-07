@@ -54,8 +54,8 @@ async def start(client, message):
         await message.reply_sticker(
             sticker="CAACAgIAAxkBAAEFQlZiAAECbThHUdgbhWYrJbhDDvFoW44AAtQMAAJ6i6BIni8iJJQzvJseBA",
            # caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
-            reply_markup=reply_markup,
-            parse_mode='html'
+            reply_markup=reply_markup
+            #parse_mode='html'
         )
         return
     if AUTH_CHANNEL and not await is_subscribed(client, message):
@@ -97,8 +97,8 @@ async def start(client, message):
         await message.reply_sticker(
             sticker="CAACAgIAAxkBAAEFQlZiAAECbThHUdgbhWYrJbhDDvFoW44AAtQMAAJ6i6BIni8iJJQzvJseBA",
           #  caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
-            reply_markup=reply_markup,
-            parse_mode='html'
+            reply_markup=reply_markup
+            #parse_mode='html'
         )
         return
     data = message.command[1]
