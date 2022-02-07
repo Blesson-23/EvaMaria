@@ -410,7 +410,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat='')
         ], [
             InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('😊 About', callback_data='about')
+            InlineKeyboardButton('💕Click Here 💕', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
