@@ -1,8 +1,20 @@
 class script(object):
     START_TXT = """𝙷𝙴𝙻𝙾 {},
 𝙼𝚈 𝙽𝙰𝙼𝙴 𝙸𝚂 <a href=https://t.me/{}>{}</a>, 𝙸 𝙲𝙰𝙽 𝙿𝚁𝙾𝚅𝙸𝙳𝙴 𝙼𝙾𝚅𝙸𝙴𝚂, 𝙹𝚄𝚂𝚃 𝙰𝙳𝙳 𝙼𝙴 𝚃𝙾 𝚈𝙾𝚄𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙽𝙳 𝙴𝙽𝙹𝙾𝚈 😍"""
-    HELP_TXT = """𝙷𝙴𝚈 {}
-𝙷𝙴𝚁𝙴 𝙸𝚂 𝚃𝙷𝙴 𝙷𝙴𝙻𝙿 𝙵𝙾𝚁 𝙼𝚈 𝙲𝙾𝙼𝙼𝙰𝙽𝙳𝚂."""
+    HELP_TXT = """🙋🏻‍♂️   Hellooo   {}
+
+○ Available Commands
+     
+ /start - Check I'm Alive..
+ /info - User info 
+ /id - User id
+ /broadcast - Broadcast (owner only)
+ /stats - Db status  (owner only )
+/song (song name) - For Songs
+
+
+- Works in bot pm
+©️MᴀɪɴᴛᴀɪɴᴇD Bʏ <a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>"""
     ABOUT_TXT = """🌻 𝐌𝐲 𝐍𝐚𝐦𝐞 : Albert 
 
 🧑‍💻 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 :<a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>
