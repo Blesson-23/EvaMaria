@@ -450,11 +450,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.send_message(
-            text=script.ABOUT_TXT.format(temp.B_NAME),
+        await client.send_sticker(
+            sticker="CAACAgIAAxkBAAEFQsViAAGcubu9gfbk7d4RlNqS-Cni-FAAAhsTAAJakthIYwemdV7Qq5ceBA",
             chat_id=query.message.chat.id,
-            reply_markup=reply_markup,
-            parse_mode='html'
+            reply_markup=reply_markup
+           # parse_mode='html'
         )
     elif query.data == "source":
         await query.message.delete()
