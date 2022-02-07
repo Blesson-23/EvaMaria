@@ -417,8 +417,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.send_sticker(
             sticker="CAACAgIAAxkBAAEFQlZiAAECbThHUdgbhWYrJbhDDvFoW44AAtQMAAJ6i6BIni8iJJQzvJseBA",
             chat_id=query.message.chat.id,
-            reply_markup=reply_markup,
-            parse_mode='html'
+            reply_markup=reply_markup
+           # parse_mode='html'
         )
         await query.answer('Piracy Is Crime')
     elif query.data == "help":
@@ -437,8 +437,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await client.send_sticker(
             sticker="CAACAgIAAxkBAAEFQlhiAAEE86gyplaR1wXQvzjUdXbyCm0AAmEPAAKecJhIW-LSbZaRQ_keBA",
             chat_id=query.message.chat.id,
-            reply_markup=reply_markup,
-            parse_mode='html'
+            reply_markup=reply_markup
+            #parse_mode='html'
         )
     elif query.data == "about":
         await query.message.delete()
