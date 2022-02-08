@@ -469,6 +469,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.HELP_TXT.format(query.from_user.mention),
             chat_id=query.message.chat.id,
             reply_markup=reply_markup,
+            disable_web_page_preview=True,
             parse_mode='html'
         )
     elif query.data == "button":
@@ -481,6 +482,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             text=script.ABOUT_TXT,
             chat_id=query.message.chat.id,
             reply_markup=reply_markup,
+            disable_web_page_preview=True,
             parse_mode='html'
         )
     elif query.data == "autofilter":
