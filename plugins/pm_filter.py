@@ -410,7 +410,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('🔍 Search', switch_inline_query_current_chat='')
         ], [
             InlineKeyboardButton('ℹ️ Help', callback_data='help'),
-            InlineKeyboardButton('💕Click Here 💕', callback_data='about')
+            InlineKeyboardButton('about', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
@@ -435,15 +435,17 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "about":
         await query.message.delete()
         buttons = [[
+            InlineKeyboardButton('💕Click Here 💕, callback_data='button')
+            ],[
             InlineKeyboardButton('🏠 Home', callback_data='start'),
             InlineKeyboardButton('🔐 Close', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
-        await client.send_message(
-            text=script.ABOUT_TXT,
+        await client.send_sticker(
+            sticker=script.ABOUT_TXT,
             chat_id=query.message.chat.id,
-            reply_markup=reply_markup,
-            parse_mode='html'
+            reply_markup=reply_markup
+            #parse_mode='html'
         )
     elif query.data == "source":
         await query.message.delete()
@@ -472,11 +474,11 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "button":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('👩‍🦯 Back', callback_data='manuelfilter')
+            InlineKeyboardButton('👩‍🦯 Back', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_message(
-            text=script.BUTTON_TXT,
+            text=script.ABOUT_TXT,
             chat_id=query.message.chat.id,
             reply_markup=reply_markup,
             parse_mode='html'
