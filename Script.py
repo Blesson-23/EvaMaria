@@ -15,7 +15,7 @@ class script(object):
 
 - Works in bot pm
 ©️MᴀɪɴᴛᴀɪɴᴇD Bʏ <a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>"""
-    ABOUT_TXT = """🌻 𝐌𝐲 𝐍𝐚𝐦𝐞 : 𝚜𝚝𝚒𝚌𝚑 ❄️
+    ABOUT_TXT = """🍊 𝐌𝐲 𝐍𝐚𝐦𝐞 : 𝚜𝚝𝚒𝚌𝚑 ❄️
 
 🧨 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 :<a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>
 
