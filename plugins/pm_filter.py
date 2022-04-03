@@ -423,7 +423,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "help":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('Help', callback_data='manuelfilter')
+            InlineKeyboardButton('Help', callback_data='manuelfilter'),
+            InlineKeyboardButton('👩‍🦯 Back', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
