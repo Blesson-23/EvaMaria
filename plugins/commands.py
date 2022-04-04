@@ -51,7 +51,7 @@ async def start(client, message):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_sticker(
-            sticker="CAACAgIAAxkBAAEO6ixiPDe8TSFxgm_ITw8BTnFqTngrfgACCBYAAvqEOUkZmsbalkAfdSME",
+            sticker="CAACAgQAAxkBAAEPHoViSvpAfGRokhBB3_VJJDsal4ZVmQAC-gMAAipyxAwxgwsqmTU6pCME",
            # caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup
             #parse_mode='html'
@@ -84,16 +84,16 @@ async def start(client, message):
         return
     if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
         buttons = [[
-            InlineKeyboardButton('🤍 Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('⚡️ Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
             ],[
-            InlineKeyboardButton('🤍 Search', switch_inline_query_current_chat='')
+            InlineKeyboardButton('⚡️ Search', switch_inline_query_current_chat='')
             ],[
-            InlineKeyboardButton('🤍 Help', callback_data='help'),
-            InlineKeyboardButton('🤍about', callback_data='about')
+            InlineKeyboardButton('⚡️ Help', callback_data='help'),
+            InlineKeyboardButton('⚡️about', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await message.reply_sticker(
-            sticker="CAACAgIAAxkBAAEO6ixiPDe8TSFxgm_ITw8BTnFqTngrfgACCBYAAvqEOUkZmsbalkAfdSME",
+            sticker="CAACAgQAAxkBAAEPHoViSvpAfGRokhBB3_VJJDsal4ZVmQAC-gMAAipyxAwxgwsqmTU6pCME",
           #  caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
             reply_markup=reply_markup
             #parse_mode='html'
