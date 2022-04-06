@@ -16,7 +16,12 @@ import json
 import base64
 logger = logging.getLogger(__name__)
 
+from info import FSUB_CHAT_ID, FSUB_CHAT_LINK, FSUB_MESSAGE
+
 BATCH_FILES = {}
+#----------------------------------------------------------------------------------
+
+#---------------------------------------------------------------------------------
 
 @Client.on_message(filters.command("start") & filters.incoming & ~filters.edited)
 async def start(client, message):
@@ -57,27 +62,17 @@ async def start(client, message):
             #parse_mode='html'
         )
         return
-    if AUTH_CHANNEL and not await is_subscribed(client, message):
-        try:
-            invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
-        except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
-            return
-        btn = [
-            [
-                InlineKeyboardButton(
-                    "🤖 Join Updates Channel", url=invite_link.invite_link
-                )
-            ]
-        ]
-
+    if FSUB_CHAT_ID and not await is_subscribed(client, message):
+        
         if message.command[1] != "subscribe":
             kk, file_id = message.command[1].split("_", 1)
             pre = 'checksubp' if kk == 'filep' else 'checksub' 
-            btn.append([InlineKeyboardButton("ഒന്നുടെ try ചെയ്യു 🥺", callback_data=f"{pre}#{file_id}")])
+            btn = [[InlineKeyboardButton("Join Channel", url=FSUB_CHAT_LINK), InlineKeyboardButton("REFRESH", f"{pre}#{file_id}")]]
+        
+            
         await client.send_message(
             chat_id=message.from_user.id,
-            text="**Please Join My Updates Channel to use this Bot!**",
+            text=FSUB_MESSAGE
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode="markdown"
             )
