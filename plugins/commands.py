@@ -72,7 +72,7 @@ async def start(client, message):
             
         await client.send_message(
             chat_id=message.from_user.id,
-            text=FSUB_MESSAGE
+            text=FSUB_MESSAGE,
             reply_markup=InlineKeyboardMarkup(btn),
             parse_mode="markdown"
             )
