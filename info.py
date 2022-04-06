@@ -1,6 +1,18 @@
 import re
 from os import environ
 
+
+
+#--------------------------------------------------
+FSUB_CHAT_ID = -1001234567890 #CHANGE THIS TO UR CHAT ID
+FSUB_CHAT_LINK = "https..." #CHANGE THIS TO  UR CHAT LINK
+FSUB_MESSAGE = ("""
+...
+....
+.....
+......
+""") #MESSAGE 
+#-----------------------------------------------------
 id_pattern = re.compile(r'^.\d+$')
 def is_enabled(value, default):
     if value.lower() in ["true", "yes", "1", "enable", "y"]:
