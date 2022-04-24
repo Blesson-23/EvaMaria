@@ -405,16 +405,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "start":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('🖤 Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('🍌 Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
-            InlineKeyboardButton('Search💥', switch_inline_query_current_chat='')
+            InlineKeyboardButton('Search🍌', switch_inline_query_current_chat='')
         ], [
-            InlineKeyboardButton('🎐Help', callback_data='help'),
-            InlineKeyboardButton('🎐ᴀʙᴏᴜᴛ', callback_data='about')
+            InlineKeyboardButton('🍌Help', callback_data='help'),
+            InlineKeyboardButton('🍌ᴀʙᴏᴜᴛ', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
-            sticker="CAACAgQAAxkBAAEPKiRiTsIhAsTJhfYnQUDFVTJsjh_i8AACyxoAApRgTgPN-dXRgPJlYyME",
+            sticker="CAACAgIAAxkBAAEPcSFiZMMY8fSOr3Fzf7iyeTmUvVKu6gAChxUAAj0PUEnem2b91sejvyQE",
             chat_id=query.message.chat.id,
             reply_markup=reply_markup
            # parse_mode='html'
@@ -428,7 +428,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
-            sticker="CAACAgQAAxkBAAEPKixiTsKAPpOkV6sOkvkI5ep-ugzUxgAC9CgAApRgTgPvlcqKqnhyayME",
+            sticker="CAACAgIAAxkBAAEPcSNiZMNIFIAd5IQNggABXEwEquAoDtsAAoAYAALAtlBJopszTa5QzzwkBA",
             chat_id=query.message.chat.id,
             reply_markup=reply_markup
             #parse_mode='html'
@@ -436,14 +436,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "about":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('💨ᴀʙᴏᴜᴛ', callback_data='button')
+            InlineKeyboardButton('🍌ᴀʙᴏᴜᴛ', callback_data='button')
             ],[
-            InlineKeyboardButton('💨Home', callback_data='start'),
-            InlineKeyboardButton('💨Close', callback_data='close_data')
+            InlineKeyboardButton('🍌Home', callback_data='start'),
+            InlineKeyboardButton('🍌Close', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
-            sticker="CAACAgQAAxkBAAEPKiZiTsIwiTmDUu-Z2ZcR3FRUmLlL6QAC5B0AApRgTgOqXyKjNqr6UiME",
+            sticker="CAACAgIAAxkBAAEPcSViZMN7TGhDGEEk0Hsf3do2NgUdPAACYhUAAiKjwUn70vs57W5IfiQE",
             chat_id=query.message.chat.id,
             reply_markup=reply_markup
             #parse_mode='html'
