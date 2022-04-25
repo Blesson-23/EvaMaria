@@ -14,17 +14,17 @@ from database.connections_mdb import active_connection
 import re
 import json
 import base64
-import sys
-
-import sys
-
-reload(sys)
-
-sys.setdefaultencoding('utf-8')
+import 
 
 
 
-sys.setdefaultencoding('utf-8')
+
+
+
+
+
+
+
 logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
