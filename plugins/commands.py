@@ -18,7 +18,7 @@ import sys
 
 import importlib
 
-importlib.reload()
+importlib.reload(sys)
 
 sys.setdefaultencoding('utf-8')
 logger = logging.getLogger(__name__)
