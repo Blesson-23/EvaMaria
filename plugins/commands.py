@@ -16,9 +16,13 @@ import json
 import base64
 import sys
 
-import importlib
+import sys
 
-importlib.reload(sys)
+reload(sys)
+
+sys.setdefaultencoding('utf-8')
+
+
 
 sys.setdefaultencoding('utf-8')
 logger = logging.getLogger(__name__)
