@@ -587,38 +587,6 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-async def auto_filter(client, msg, spoll=False):
-    if not spoll:
-        message = msg
-        if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
-            return
-        if 2 < len(message.text) < 100:
-            search = message.text
-            files, offset, total_results = await get_search_results(search.lower(), offset=0, filter=True)
-            if not files:
-                if SPELL_MODE:  
-                    reply = search.replace(" ", "+")
-                    reply_markup = InlineKeyboardMarkup([[
-                        InlineKeyboardButton("🔮IMDB🔮", url=f"https://imdb.com/find?q={reply}"),
-                        InlineKeyboardButton("🪐 Reason", callback_data="reason")
-                    ]])
-                    imdb=await get_poster(search)
-                    if imdb and imdb.get('poster'):
-                        del3 = await message.reply_photo(photo=imdb.get('poster'), caption=SPELL_TXT.format(mention=message.from_user.mention, query=search, title=imdb.get('title'), genres=imdb.get('genres'), year=imdb.get('year'), rating=imdb.get('rating'), short=imdb.get('short_info'), url=imdb['url']), reply_markup=reply_markup) 
-                        asyncio.sleep(600)
-                        del3.delete()
-                        message.delete()
-                        return
-                    else:
-                        return
-                else:
-                    return
-        else:
-            return
-    else:
-        message = msg.message.reply_to_message # msg will be callback query
-        search, files, offset, total_results = spoll
-
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
@@ -784,6 +752,38 @@ async def auto_filter(client, msg, spoll=False):
         await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
         await msg.message.delete()
+
+async def auto_filter(client, msg, spoll=False):
+    if not spoll:
+        message = msg
+        if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
+            return
+        if 2 < len(message.text) < 100:
+            search = message.text
+            files, offset, total_results = await get_search_results(search.lower(), offset=0, filter=True)
+            if not files:
+                if SPELL_MODE:  
+                    reply = search.replace(" ", "+")
+                    reply_markup = InlineKeyboardMarkup([[
+                        InlineKeyboardButton("🔮IMDB🔮", url=f"https://imdb.com/find?q={reply}"),
+                        InlineKeyboardButton("🪐 Reason", callback_data="reason")
+                    ]])
+                    imdb=await get_poster(search)
+                    if imdb and imdb.get('poster'):
+                        del3 = await message.reply_photo(photo=imdb.get('poster'), caption=SPELL_TXT.format(mention=message.from_user.mention, query=search, title=imdb.get('title'), genres=imdb.get('genres'), year=imdb.get('year'), rating=imdb.get('rating'), short=imdb.get('short_info'), url=imdb['url']), reply_markup=reply_markup) 
+                        asyncio.sleep(600)
+                        del3.delete()
+                        message.delete()
+                        return
+                    else:
+                        return
+                else:
+                    return
+        else:
+            return
+    else:
+        message = msg.message.reply_to_message # msg will be callback query
+        search, files, offset, total_results = spoll
 
 
 async def manual_filters(client, message, text=False):
