@@ -29,26 +29,13 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 
-SPELL_TXT = """✯Hey ||{mention}||
 
-✯Couldn't find any results for {query}, Do you searched for this movie ?
-✯Check spelling 
-✯Not OTT released
-
-      🌟MOVIE DETAILS🌟
-
-♻️Title: {title}
-🎭Genre: {genres}
-📆Year: {year}
-🌟Rating: {rating}
-"""
 
 @Client.on_message(filters.group & filters.text & ~filters.edited & filters.incoming)
 async def give_filter(client, message):
     k = await manual_filters(client, message)
     if k == False:
         await auto_filter(client, message)
-
 
 @Client.on_callback_query(filters.regex(r"^next"))
 async def next_page(bot, query):
@@ -752,39 +739,6 @@ async def auto_filter(client, msg, spoll=False):
         await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     if spoll:
         await msg.message.delete()
-
-async def auto_filter(client, msg, spoll=False):
-    if not spoll:
-        message = msg
-        if re.findall("((^\/|^,|^!|^\.|^[\U0001F600-\U000E007F]).*)", message.text):
-            return
-        if 2 < len(message.text) < 100:
-            search = message.text
-            files, offset, total_results = await get_search_results(search.lower(), offset=0, filter=True)
-            if not files:
-                if SPELL_MODE:  
-                    reply = search.replace(" ", "+")
-                    reply_markup = InlineKeyboardMarkup([[
-                        InlineKeyboardButton("🔮IMDB🔮", url=f"https://imdb.com/find?q={reply}"),
-                        InlineKeyboardButton("🪐 Reason", callback_data="reason")
-                    ]])
-                    imdb=await get_poster(search)
-                    if imdb and imdb.get('poster'):
-                        del3 = await message.reply_photo(photo=imdb.get('poster'), caption=SPELL_TXT.format(mention=message.from_user.mention, query=search, title=imdb.get('title'), genres=imdb.get('genres'), year=imdb.get('year'), rating=imdb.get('rating'), short=imdb.get('short_info'), url=imdb['url']), reply_markup=reply_markup) 
-                        asyncio.sleep(600)
-                        del3.delete()
-                        message.delete()
-                        return
-                    else:
-                        return
-                else:
-                    return
-        else:
-            return
-    else:
-        message = msg.message.reply_to_message # msg will be callback query
-        search, files, offset, total_results = spoll
-
 
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id
