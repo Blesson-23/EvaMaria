@@ -11,7 +11,7 @@ def is_enabled(value, default):
         return default
 
 # function to redirect the file to bot pm or channel
-def redirected_env(value):
+def redirect_env(value):
     value = str(value)
     if value.lower() in ['chat', 'group', 'channel', 'supergroup', 'true']:
         return 'Chat'
