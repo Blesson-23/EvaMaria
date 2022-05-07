@@ -60,11 +60,13 @@ async def next_page(bot, query):
     if not files:
         return
     settings = await get_settings(query.message.chat.id)
+    pre = 'Chat' if settings.get('redirect_to') == 'Chat' else 'files'
+
     if settings['button']:
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
+                    text=f"🔮 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'files#{file.file_id}'
                 ),
             ]
             for file in files
@@ -660,9 +662,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 ],
                 [
                     InlineKeyboardButton( 'Redirect To',
-                                         callback_data=f'setgs#redirect_to#{settings["redirect_to"]}#{grp_id}',),
+                                         callback_data=f'setgs#redirect_to#{settings.get("redirect_to")}#{grp_id}',),
                     InlineKeyboardButton('👤 PM' if settings["redirect_to"] == "PM" else '📄 Chat',
-                                         callback_data=f'setgs#redirect_to#{settings["redirect_to"]}#{grp_id}',),
+                                         callback_data=f'setgs#redirect_to#{settings.get("redirect_to")}#{grp_id}',),
                 ],
                 [
                     InlineKeyboardButton('Bot PM', callback_data=f'setgs#botpm#{settings["botpm"]}#{str(grp_id)}'),
@@ -720,7 +722,7 @@ async def auto_filter(client, msg, spoll=False):
         search, files, offset, total_results = spoll
 
     pre = 'filep' if settings['file_secure'] else 'file'
-    pre = 'Chat' if settings['redirect_to'] == 'Chat' else pre # https://github.com/AlbertEinsteinTG/EvaMaria-Mod/blob/b8f72d384bc900cf5399f820805ab0b9b42abd11/plugins/pm_filter.py#L767
+    pre = 'Chat' if settings.get('redirect_to') == 'Chat' else pre # https://github.com/AlbertEinsteinTG/EvaMaria-Mod/blob/b8f72d384bc900cf5399f820805ab0b9b42abd11/plugins/pm_filter.py#L767
 
     if settings["button"]:
         btn = [
