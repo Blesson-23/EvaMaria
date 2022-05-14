@@ -8,7 +8,7 @@ from Script import script
 import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
-from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, REDIRECT_TO, DELETE_TIME, \
+from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, DELETE_TIME, \
     UNAUTHORIZED_CALLBACK_TEXT, SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters
@@ -406,46 +406,34 @@ async def cb_handler(client: Client, query: CallbackQuery):
             f_caption = f"{files.file_name}"
 
         try:
-            msg = await client.send_cached_media(
-                chat_id=REDIRECT_TO,
-                file_id=file_id,
-                caption=f_caption,
-                protect_content=True if ident == "filep" else False 
-            )
-            msg1 = await query.message.reply(
-                f'<b>File Name: {title}</b>\n\n'
-                f'<b>File Size: {size}</b>\n\n'
-                '<code>THis file will be deleted in 5 minutes.!</code>',
-                True,
-                'html',
-                reply_markup=InlineKeyboardMarkup(
-                    [
-                        [
-                            InlineKeyboardButton('🔥 GET FILE 🔥', url = msg.link)
-                        ],
-                        [
-                            InlineKeyboardButton('Close ❌', callback_data='close')
-                        ]
-                    ]
+            if AUTH_CHANNEL and not await is_subscribed(client, query):
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                return
+            elif settings['botpm']:
+                await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
+                return
+            else:
+                await client.send_cached_media(
+                    chat_id=query.from_user.id,
+                    file_id=file_id,
+                    caption=f_caption,
+                    protect_content=True if ident == "filep" else False 
                 )
-            )
-            await query.answer('Check Out The Chat',)
-            await asyncio.sleep(DELETE_TIME)
-            await msg1.delete()
-            await msg.delete()
-            del msg1, msg
+                await query.answer('𝗖𝗛𝗘𝗖𝗞 𝗣𝗠 , 𝗜 𝗛𝗔𝗩𝗘 𝗦𝗘𝗡𝗧 𝗙𝗜𝗟𝗘𝗦 𝗢𝗡 𝗬𝗢𝗨𝗥 𝗣𝗠', show_alert=True)
+        except UserIsBlocked:
+            await query.answer('Unblock the bot mahn !', show_alert=True)
+        except PeerIdInvalid:
+            await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
         except Exception as e:
-            logger.exception(e, exc_info=True)
-            await query.answer(f"Encountering Issues", True)
-
+            await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("I Like Your Smartness, But Don't Be Oversmart 😒", show_alert=True)
+            await query.answer("𝗔𝗬𝗬𝗔𝗗𝗔 𝗡𝗘𝗘 𝗢𝗥𝗨 𝗞𝗜𝗟𝗟𝗔𝗗𝗜 𝗧𝗛𝗔𝗡𝗡𝗘 , 𝗣𝗢𝗬𝗜 𝗝𝗢𝗜𝗡 𝗖𝗛𝗘𝗬𝗧𝗛𝗜𝗧 𝗜𝗩𝗜𝗗𝗘 𝗡𝗝𝗘𝗞𝗞 𝗦𝗘𝗧𝗧𝗔𝗬𝗜 !", show_alert=True)
             return
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
-            return await query.answer('No such file exist.')
+            return await query.answer('𝗔𝗬𝗬𝗢𝗗𝗔 𝗠𝗢𝗡𝗘 , 𝗔𝗧𝗛 𝗜𝗣𝗣𝗢 𝗜𝗟𝗟𝗔.')
         files = files_[0]
         title = files.file_name
         size = get_size(files.file_size)
