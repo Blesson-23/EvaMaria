@@ -116,7 +116,7 @@ class Database:
             'welcome': MELCOW_NEW_USERS,
             'template': IMDB_TEMPLATE
         }
-         chat = await self.grp.find_one({'id':int(id)})
+        chat = await self.grp.find_one({'id':int(id)})
         if chat:
             return chat.get('settings', default)
         return default
