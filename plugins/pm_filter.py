@@ -460,12 +460,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "start":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('💣Add Me To Your Groups ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('🥜𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('Search🔎', switch_inline_query_current_chat='')
         ], [
-            InlineKeyboardButton('🤸‍♀️Help', callback_data='help'),
-            InlineKeyboardButton('💜ᴀʙᴏᴜᴛ', callback_data='about')
+            InlineKeyboardButton('✨️Help', callback_data='help'),
+            InlineKeyboardButton('🖤ᴀʙᴏᴜᴛ', callback_data='about')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
@@ -491,9 +491,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "about":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('💣ᴀʙᴏᴜᴛ', callback_data='button')
+            InlineKeyboardButton('🥜ᴀʙᴏᴜᴛ', callback_data='button')
             ],[
-            InlineKeyboardButton('💣Home', callback_data='start'),
+            InlineKeyboardButton('💝Home', callback_data='start'),
             InlineKeyboardButton('🚪Close', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
