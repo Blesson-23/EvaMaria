@@ -8,6 +8,7 @@ import re
 import json
 import base64
 import sys
+from aiohttp import ClientSession
 from asyncio import get_running_loop
 from io import BytesIO
 from googletrans import Translator
