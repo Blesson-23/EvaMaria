@@ -13,6 +13,7 @@ from io import BytesIO
 from googletrans import Translator
 from gtts import gTTS
 from Script import script
+from function import make_carbon
 from pyrogram import Client, filters
 from pyrogram.errors import ChatAdminRequired, FloodWait
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup
@@ -25,6 +26,7 @@ from database.connections_mdb import active_connection
 logger = logging.getLogger(__name__)
 
 BATCH_FILES = {}
+aiohttpsession = ClientSession()
 
 @Client.on_message(filters.command("start") & filters.incoming & ~filters.edited)
 async def start(client, message):
@@ -553,3 +555,22 @@ async def tts(bot, message):
         await m.edit(e)
         e = traceback.format_exc()
         print(e)
+
+@Client.on_message(filters.private & filters.command("carbon"))
+async def carbon_func(_, message):
+    if not message.reply_to_message:
+        return await message.reply_text(
+            "Reply to some text"
+        )
+    if not message.reply_to_message.text:
+        return await message.reply_text(
+            "Reply to some text"
+        )
+    user_id = message.from_user.id
+    m = await message.reply_text("ᴘʀᴏᴄᴇssɪɴɢ...")
+    carbon = await make_carbon(message.reply_to_message.text)
+    await m.edit("ᴜᴘʟᴏᴀᴅɪɴɢ..")
+    await message.reply_photo(
+        photo=carbon)
+    await m.delete()
+    carbon.close()
