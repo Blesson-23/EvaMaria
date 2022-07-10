@@ -535,12 +535,12 @@ def convert(text):
     tts.write_to_fp(audio)
     return audio
 
-@Cilent.on_message(filters.command("tts"))
+@Cilent.on_message(filters.private & filters.command("tts"))
 async def tts(bot, message):
     if not message.reply_to_message:
-        return await message.reply_text("Reply to some text ffs.")
+        return await message.reply_text("Reply to some text")
     if not message.reply_to_message.text:
-        return await message.reply_text("Reply to some text ffs.")
+        return await message.reply_text("Reply to some text")
     m = await message.reply_text("`Processing...`")
     text = message.reply_to_message.text
     try:
