@@ -2,6 +2,16 @@ import os
 import logging
 import random
 import asyncio
+import requests
+import traceback
+import re
+import json
+import base64
+import sys
+from asyncio import get_running_loop
+from io import BytesIO
+from googletrans import Translator
+from gtts import gTTS
 from Script import script
 from pyrogram import Client, filters
 from pyrogram.errors import ChatAdminRequired, FloodWait
@@ -11,19 +21,6 @@ from database.users_chats_db import db
 from info import CHANNELS, ADMINS, AUTH_CHANNEL, LOG_CHANNEL, PICS, BATCH_FILE_CAPTION, CUSTOM_FILE_CAPTION, PROTECT_CONTENT
 from utils import get_settings, get_size, is_subscribed, save_group_settings, temp
 from database.connections_mdb import active_connection
-import re
-import json
-import base64
-import sys
-
-
-
-
-
-
-
-
-
 
 logger = logging.getLogger(__name__)
 
@@ -526,3 +523,33 @@ async def save_template(client, message):
     template = message.text.split(" ", 1)[1]
     await save_group_settings(grp_id, 'template', template)
     await sts.edit(f"Successfully changed template for {title} to\n\n{template}")
+
+# New Commands
+
+def convert(text):
+    audio = BytesIO()
+    i = Translator().translate(text, dest="en")
+    lang = i.src
+    tts = gTTS(text, lang=lang)
+    audio.name = lang + ".mp3"
+    tts.write_to_fp(audio)
+    return audio
+
+@Cilent.on_message(filters.command("tts"))
+async def tts(bot, message):
+    if not message.reply_to_message:
+        return await message.reply_text("Reply to some text ffs.")
+    if not message.reply_to_message.text:
+        return await message.reply_text("Reply to some text ffs.")
+    m = await message.reply_text("`Processing...`")
+    text = message.reply_to_message.text
+    try:
+        loop = get_running_loop()
+        audio = await loop.run_in_executor(None, convert, text)
+        await message.reply_audio(audio)
+        await m.delete()
+        audio.close()
+    except Exception as e:
+        await m.edit(e)
+        e = traceback.format_exc()
+        print(e)
