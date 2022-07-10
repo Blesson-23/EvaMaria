@@ -7,3 +7,10 @@ umongo==3.0.1
 requests
 bs4
 imdbpy
+requests
+aiofiles
+aiohttp
+speedtest-cli
+Pillow>=4.2.0
+googletrans==4.0.0-rc1
+gtts
