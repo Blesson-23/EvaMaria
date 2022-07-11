@@ -474,7 +474,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "help":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('Help', callback_data='manuelfilter'),
+            InlineKeyboardButton('Help', callback_data='help_2'),
             InlineKeyboardButton('👩‍🦯 Back', callback_data='start')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -511,9 +511,24 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
-    elif query.data == "manuelfilter":
+    elif query.data == "help_2":
         await query.message.delete()
         buttons = [[
+            InlineKeyboardButton('Basic', callback_data='basic'),
+            InlineKeyboardButton('TTS', callback_data='txtts'),
+            InlineKeyboardButton('Logo', callback_data='logo')
+            ],[
+            InlineKeyboardButton('Carbon', callback_data='carb'),
+            InlineKeyboardButton('Fun', callback_data='fu_n'),
+            InlineKeyboardButton('IMDB', callback_data='i_md_b')
+            ],[
+            InlineKeyboardButton('Lyrics', callback_data='lyric'),
+            InlineKeyboardButton('Telegraph', callback_data='telegra'),
+            InlineKeyboardButton('Sticker Id', callback_data='stick')
+            ],[
+            InlineKeyboardButton('Google Translation', callback_data='g_tran'),
+            InlineKeyboardButton('Misc', callback_data='mis')
+            ],[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
@@ -524,6 +539,32 @@ async def cb_handler(client: Client, query: CallbackQuery):
             disable_web_page_preview=True,
             parse_mode='html'
         )
+    elif query.data == "help_3":
+        buttons = [[
+            InlineKeyboardButton('Basic', callback_data='basic'),
+            InlineKeyboardButton('TTS', callback_data='txtts'),
+            InlineKeyboardButton('Logo', callback_data='logo')
+            ],[
+            InlineKeyboardButton('Carbon', callback_data='carb'),
+            InlineKeyboardButton('Fun', callback_data='fu_n'),
+            InlineKeyboardButton('IMDB', callback_data='i_md_b')
+            ],[
+            InlineKeyboardButton('Lyrics', callback_data='lyric'),
+            InlineKeyboardButton('Telegraph', callback_data='telegra'),
+            InlineKeyboardButton('Sticker Id', callback_data='stick')
+            ],[
+            InlineKeyboardButton('Google Translation', callback_data='g_tran'),
+            InlineKeyboardButton('Misc', callback_data='mis')
+            ],[
+            InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.HELP_TXT.format(query.from_user.mention),
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='html')
+
     elif query.data == "button":
         await query.message.delete()
         buttons = [[
