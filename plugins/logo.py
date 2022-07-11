@@ -91,7 +91,7 @@ async def dispatch(message: Message, logos: List[Tuple[str]]):
     if os.path.exists("temp_logos/"):
         shutil.rmtree("temp_logos/", ignore_errors=True)
 
-@Bot.on_message(filters.command("logo"))
+@Client.on_message(filters.private & filters.command("logo"))
 async def jv_logo_maker(bot, message: Message):
     global STATUS  # pylint: disable=global-statement
     global check
