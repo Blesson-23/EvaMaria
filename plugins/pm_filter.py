@@ -565,6 +565,128 @@ async def cb_handler(client: Client, query: CallbackQuery):
             disable_web_page_preview=True,
             parse_mode='html')
 
+    elif query.data == "basic":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.BASIC,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "txtts":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.TTS,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "logo":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.LOGO,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "carb":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.CARBON,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "fu_n":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.FUN,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "i_md_b":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.IMDB,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "lyric":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.LYRIC,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "telegra":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.TELEGRAPH,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "stick":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.STICKER_ID,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "g_tran":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.G_TRANS,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    elif query.data == "mis":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text=script.MISC,
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+
     elif query.data == "button":
         await query.message.delete()
         buttons = [[
