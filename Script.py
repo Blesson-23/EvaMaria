@@ -15,6 +15,49 @@ class script(object):
 
 - Works in bot pm
 ©️MᴀɪɴᴛᴀɪɴᴇD Bʏ <a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>"""
+
+
+
+
+
+    BASIC = """**Basic Commands**
+__° /start - Check I'm Alive..__"""
+    
+    TTS = """**Text To Speech**
+__° /tts - Reply To Any TEXT Message With Language Code To Convert As Audio__
+
+    LOGO = """**Text to Logo**
+__° /logo - Command with any text
+
+Eg:__ `/logo Bot`"""
+ 
+    CARBON = """**Carbon Image**
+__° /carbon - Reply To Any TEXT To Make Carbon Image__"""
+
+    FUN = """**Fun Commands**
+__° /dice - 🎲
+° /arrow - 🎯
+° /goal - ⚽️
+° /luck - 🎰
+° /throw - 🏀
+° /bowling - 🎳
+° /runs - comedy comments
+° /ikka - stickers__"""
+    IMDB ="""**Find movie info**
+__° /imdb - Command with any movie name
+
+Eg:__ `/imdb Chunkz`"""
+    LYRIC ="""**Find Songs Lyrics**
+__° /lyrics - Reply to any songs first line__"""
+    TELEGRAPH ="""**Telegraph**
+__° /telegraph - Reply To Any Under 5MB Media To Upload To Telegra.ph__"""
+    STICKER_ID ="""**Sticker id**
+__° /stickerid - Reply to any sticker__"""
+    G_TRANS = """**Google Translate**
+__° Coming Soon__"""
+
+
+
     ABOUT_TXT = """ ✨️𝐌𝐲 𝐍𝐚𝐦𝐞 :ᴀɴʏᴀ ✨️
 
 ☆ 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 :<a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>
