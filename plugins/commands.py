@@ -593,8 +593,6 @@ async def sng(bot, message):
           except Exception as e:                            
              await message.reply_text(f"I Can't Find A Song With ```{song}```", quote = True)
 
-
-
 def search(song):
         r = requests.get(API + song)
         find = r.json()
