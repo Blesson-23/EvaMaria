@@ -6,10 +6,7 @@ class script(object):
 ○ Available Commands
      
  /start - Check I'm Alive..
- /info - User info 
- /id - User id
- /broadcast - Broadcast (owner only)
- /stats - Db status  (pm only )
+
 
 
 
@@ -24,7 +21,7 @@ class script(object):
 __° /start - Check I'm Alive..__"""
     
     TTS = """**Text To Speech**
-__° /tts - Reply To Any TEXT Message With Language Code To Convert As Audio__
+__° /tts - Reply To Any TEXT Message With Language Code To Convert As Audio__"""
 
     LOGO = """**Text to Logo**
 __° /logo - Command with any text
@@ -55,6 +52,12 @@ __° /telegraph - Reply To Any Under 5MB Media To Upload To Telegra.ph__"""
 __° /stickerid - Reply to any sticker__"""
     G_TRANS = """**Google Translate**
 __° Coming Soon__"""
+    MISC = """**Miscellaneous**
+__° /info - User info 
+° /id - User id
+° /broadcast - Broadcast (owner only)
+° /stats - Db status  (pm only )"""
+
 
 
 
