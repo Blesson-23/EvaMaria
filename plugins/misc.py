@@ -209,6 +209,21 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
     else:
         await quer_y.message.edit(caption, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=False)
     await quer_y.answer()
+
+
+# sticker id
+
+@Client.on_message(filters.command(["stickerid"]))
+async def stickerid(bot, message): 
+    if message.reply_to_message.sticker:
+       await message.reply(f"**Sticker ID is**  \n `{message.reply_to_message.sticker.file_id}` \n \n ** Unique ID is ** \n\n`{message.reply_to_message.sticker.file_unique_id}`", quote=True)
+    elif not message.reply_to_message.sticker:
+        await message.reply("Reply to some Stickers")
+        return
+    else: 
+       await message.reply("Oops !! Not a sticker file")
+
+
         
 
         
