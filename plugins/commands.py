@@ -721,25 +721,32 @@ def lyrics(song):
 @Client.on_message(filters.command("tr"))
 async def tr(_, message):
     if len(message.command) != 2:
-        await message.reply_text("/tr [LANGUAGE_CODE]")
+        await message.reply_text(
+            "__Reply to a message with /tr [language code]__"
+            + "\n" + Langs
+            + "\n\n__Eg:__ `/tr ml`"
+        )
         return
     lang = message.text.split(None, 1)[1]
     if not message.reply_to_message or not lang:
         await message.reply_text(
-            "Reply to a message with /tr [language code]"
+            "__Reply to a message with /tr [language code]__"
             + "\n" + Langs
+            + "\n\n__Eg:__ `/tr ml`"
         )
         return
     if message.reply_to_message.text:
         text = message.reply_to_message.text
+        msg = await message.reply("__Processing...__")
         try:
             i = Translator().translate(text, dest=lang)
         except ValueError:
-            await message.reply_text("[ERROR]: LANGUAGE NOT FOUND")
+            await msg.edit_text("[ERROR]: LANGUAGE NOT FOUND")
             return
-        await message.reply_text(i.text)
+        await msg.edit_text(i.text)
     elif message.reply_to_message.caption:
         text = message.reply_to_message.caption
+        msg = await message.reply("__Processing...__")
         i = Translator().translate(text, dest=lang)
-        await message.reply_text(i.text)
+        await msg.edit_text(i.text)
 
