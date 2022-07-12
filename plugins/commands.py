@@ -727,7 +727,7 @@ async def tr(_, message):
     if not message.reply_to_message or not lang:
         await message.reply_text(
             "Reply to a message with /tr [language code]"
-            + "\n"Langs
+            + "\n" + Langs
         )
         return
     if message.reply_to_message.text:
