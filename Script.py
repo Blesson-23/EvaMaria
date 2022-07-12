@@ -44,7 +44,7 @@ __° /telegraph - Reply To Any Under 5MB Media To Upload To Telegra.ph__"""
     STICKER_ID ="""**Sticker id**
 __° /stickerid - Reply to any sticker__"""
     G_TRANS = """**Google Translate**
-__° Coming Soon__"""
+__° /tr language code : Reply to any text__"""
     MISC = """**Miscellaneous**
 __° /info - User info 
 ° /id - User id
