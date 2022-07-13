@@ -7,6 +7,7 @@ from database.ia_filterdb import Media
 from utils import get_size, temp, get_settings
 from Script import script
 from pyrogram.errors import ChatAdminRequired
+from datetime import datetime
 
 """-----------------------------------------https://t.me/GetTGLink/4179 --------------------------------------"""
 
@@ -53,7 +54,9 @@ async def save_group(bot, message):
                         await (temp.MELCOW['welcome']).delete()
                     except:
                         pass
-                temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Welcome to {message.chat.title}</b>")
+                chatmem = await message.chat.get_member(message.from_user.id)
+                date = datetime.fromtimestamp(chatmem.joined_date).strftime("%m/%d/%Y, %H:%M:%S")
+                temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Welcome to {message.chat.title}</b>\n\nJoined on: {date}")
 
 
 @Client.on_message(filters.command('leave') & filters.user(ADMINS))

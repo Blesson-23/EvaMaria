@@ -3,6 +3,8 @@ from pyrogram.types import Message
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 import random
 import os
+from datetime import datetime
+from pytz import timezone
 
 USE_AS_BOT = os.environ.get("USE_AS_BOT", True)
 
@@ -121,3 +123,65 @@ async def ikka(bot, message):
     else:
         await message.reply_sticker(effective_string)
 
+
+
+
+# TIME 
+# This is just a fork of  https://github.com/UsergeTeam/Userge-Plugins/tree/dev/plugins/utils/time
+
+
+COUNTRY_CITY = 'Asia/Kolkata'
+
+@Client.on_message(filters.command("time"))
+async def time_handler(bot: Client, msg: Message):
+    country_input = await flag_checks(msg)
+    if country_input is None:
+        return
+    country_code = COUNTRY_CITY if not country_input else country_input
+    try:
+        timezone(country_code)
+    except BaseException:
+        await msg.reply(" ".join([
+            "Unable To Determine Timezone With Given Country Code |",
+            country_code
+        ]))
+        return
+    datetime_now = datetime.now(timezone(country_code))
+    date_day = datetime_now.strftime("%d")
+    date_time = datetime_now.strftime('%I:%M%p')
+    if date_day[0] == "0":
+        date_day = date_day[1:]
+    if date_time[0] == "0":
+        date_time = date_time[1:]
+    await msg.reply(" ".join(
+        ["It's", date_time, "on",
+         datetime_now.strftime('%A'), datetime_now.strftime('%B'),
+         date_day + ordinal_suffix(int(date_day)), "in",
+         country_code.replace("_", " ") + "."
+         ]
+    ))
+
+
+
+def ordinal_suffix(day: int):
+    if 3 < day < 21 or 23 < day < 31:
+        return 'th'
+    return {1: 'st', 2: 'nd', 3: 'rd'}[day % 10]
+
+
+async def flag_checks(message: Message):
+    default_message = (
+        "<code>No Country_City code found after the flag...\n\n"
+        "Below is a list of all the Timezones Avaliable</code> \n<a "
+        "href=https://telegra.ph/Country-Codes-07-13"
+        ">Click Here!</a>\n<code>Enter one in"
+        "\n"
+        "<code>Ex: Asia/Kolkata</code>")
+    text = message.text
+    if " " in text:
+        country_input = message.text.split(None, 1)[1]
+        if not country_input:
+            await message.reply(default_message)
+            return None
+        return country_input
+    return COUNTRY_CITY

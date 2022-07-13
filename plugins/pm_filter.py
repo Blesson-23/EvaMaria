@@ -2,7 +2,7 @@
 import asyncio
 import re
 import ast
-
+from datetime import datetime
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
@@ -21,6 +21,7 @@ from database.filters_mdb import (
     find_filter,
     get_filters,
 )
+from pytz import timezone
 import logging
 
 logger = logging.getLogger(__name__)
@@ -932,6 +933,7 @@ async def auto_filter(client, msg, spoll=False):
             plot=imdb['plot'],
             rating=imdb['rating'],
             url=imdb['url'],
+            time=datetime.now(timezone('Asia/Kolkata')).strftime("%m/%d/%Y, %H:%M:%S"),
             **locals()
         )
     else:

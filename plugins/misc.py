@@ -5,6 +5,7 @@ from info import IMDB_TEMPLATE
 from utils import extract_user, get_file_id, get_poster, last_online
 import time
 from datetime import datetime
+from pytz import timezone
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 import logging
 logger = logging.getLogger(__name__)
@@ -191,6 +192,7 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
             plot = imdb['plot'],
             rating = imdb['rating'],
             url = imdb['url'],
+            time=datetime.now(timezone('Asia/Kolkata')).strftime("%m/%d/%Y, %H:%M:%S"),
             **locals()
         )
     else:
