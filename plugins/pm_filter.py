@@ -39,7 +39,7 @@ async def give_filter(client, message):
         await auto_filter(client, message)
 
 @Client.on_callback_query(filters.regex(r"^next"))
-async def next_page(bot, query):
+async def next_page(bot, query: CallbackQuery):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
         return await query.answer("oKda", show_alert=True)
@@ -67,7 +67,7 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"⚪️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
@@ -76,33 +76,39 @@ async def next_page(bot, query):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"⚪️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
         ]
+    try:
+        btn.insert(0, query.message.reply_markup.inline_keyboard[1])
+        btn.insert(0, query.message.reply_markup.inline_keyboard[0])
+    except Exception as e:
+        logger.error(e)
+        pass
 
-    if 0 < offset <= 10:
+    if 0 < offset <= 5:
         off_set = 0
     elif offset == 0:
         off_set = None
     else:
-        off_set = offset - 10
+        off_set = offset - 5
     if n_offset == 0:
         btn.append(
             [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
-             InlineKeyboardButton(f"📃 Pages {round(int(offset) / 10) + 1} / {round(total / 10)}",
+             InlineKeyboardButton(f"📃 Pages {round(int(offset) / 5) + 1} / {round(total / 5)}",
                                   callback_data="pages")]
         )
     elif off_set is None:
         btn.append(
-            [InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
+            [InlineKeyboardButton(f"🗓 {round(int(offset) / 5) + 1} / {round(total / 5)}", callback_data="pages"),
              InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")])
     else:
         btn.append(
             [
                 InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
-                InlineKeyboardButton(f"🗓 {round(int(offset) / 10) + 1} / {round(total / 10)}", callback_data="pages"),
+                InlineKeyboardButton(f"🗓 {round(int(offset) / 5) + 1} / {round(total / 5)}", callback_data="pages"),
                 InlineKeyboardButton("NEXT ⏩", callback_data=f"next_{req}_{key}_{n_offset}")
             ],
         )
@@ -805,6 +811,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode='html'
         )
+    elif query.data.startswith("useless"):
+        _, n = query.data.split("_")
+        TEXTZ = {
+            'info': "🚨𝗜𝗡𝗙𝗢𝗥𝗠𝗔𝗧𝗜𝗢𝗡\n\nRead 😌👇\n\nIF Y𝗼𝘂 DIDN'T  G𝗲𝘁 𝘆𝗼𝘂𝗿 REQYESTED M𝗼𝘃𝗶𝗲 / S𝗲𝗿𝗶𝗲𝘀 𝗰𝗹𝗶𝗰𝗸 𝗼𝗻 𝘁𝗵𝗲 𝗻𝗲𝘅𝘁 𝗽𝗮𝗴𝗲 𝗯𝘂𝘁𝘁𝗼𝗻 𝗮𝗻𝗱 𝗰𝗵𝗲𝗰𝗸 𝗶𝘁... 🌚✌️",
+            'request': "𝗠𝗼𝘃𝗶𝗲 𝗿𝗲𝗾𝘂𝗲𝘀𝘁 𝗳𝗼𝗿𝗺𝗮𝘁\n\n𝗚𝗼 𝘁𝗼 𝗴𝗼𝗼𝗴𝗹𝗲 ➢ 𝗧𝘆𝗽𝗲 𝗺𝗼𝘃𝗶𝗲 𝗻𝗮𝗺𝗲 ➣ 𝗰𝗼𝗽𝘆 𝗰𝗼𝗿𝗿𝗲𝗰𝘁 𝗻𝗮𝗺𝗲 ➤ 𝗽𝗮𝘀𝘁𝗲 𝗼𝗻 𝗴𝗿𝗼𝘂𝗽\n\n𝗘𝘅𝗮𝗺𝗽𝗹𝗲 𝗺𝗮𝗹𝗶𝗸 2021\n\n𝗗𝗼𝗻'𝘁 𝘂𝘀𝗲 (/!,)"}
+        await query.answer(TEXTZ[n], show_alert=True)
     elif query.data.startswith("setgs"):
         ident, set_type, status, grp_id = query.data.split("#")
         grpid = await active_connection(str(query.from_user.id))
@@ -890,7 +902,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
+                    text=f"⚪️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 ),
             ]
             for file in files
@@ -899,7 +911,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"[{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
+                    text=f"⚪️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 ),
             ]
             for file in files
@@ -910,15 +922,19 @@ async def auto_filter(client, msg, spoll=False):
         BUTTONS[key] = search
         req = message.from_user.id if message.from_user else 0
         btn.append(
-            [InlineKeyboardButton(text=f"🗓 1/{round(int(total_results) / 10)}", callback_data="pages"),
+            [InlineKeyboardButton(text=f"🗓 1/{round(int(total_results) / 5)}", callback_data="pages"),
              InlineKeyboardButton(text="NEXT ⏩", callback_data=f"next_{req}_{key}_{offset}")]
         )
     else:
         btn.append(
             [InlineKeyboardButton(text="🗓 1/1", callback_data="pages")]
         )
+    
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
+    btn.insert(0, [InlineKeyboardButton('🎈 INFO 🎈', callback_data='useless_info'), InlineKeyboardButton('📺 REQUEST 📺', callback_data='useless_request')])
     TEMPLATE = settings['template']
+    _name = imdb['title'] if imdb else search
+    btn.insert(0, [InlineKeyboardButton(_name, callback_data='null')])
     if imdb:
         cap = TEMPLATE.format(
             query=search,
