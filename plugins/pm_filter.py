@@ -528,7 +528,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Sticker Id', callback_data='stick')
             ],[
             InlineKeyboardButton('Google Translation', callback_data='g_tran'),
-            InlineKeyboardButton('Misc', callback_data='mis')
+            InlineKeyboardButton('Misc', callback_data='mis'),
+            InlineKeyboardButton('Time', callback_data='timeHelp')
             ],[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
         ]]
@@ -555,7 +556,8 @@ async def cb_handler(client: Client, query: CallbackQuery):
             InlineKeyboardButton('Sticker Id', callback_data='stick')
             ],[
             InlineKeyboardButton('Google Translation', callback_data='g_tran'),
-            InlineKeyboardButton('Misc', callback_data='mis')
+            InlineKeyboardButton('Misc', callback_data='mis'),
+            InlineKeyboardButton('Time', callback_data='timeHelp')
             ],[
             InlineKeyboardButton('👩‍🦯 Back', callback_data='help')
         ]]
@@ -577,6 +579,20 @@ async def cb_handler(client: Client, query: CallbackQuery):
             disable_web_page_preview=True,
             parse_mode='md'
         )
+    elif query.data == "timeHelp":
+        buttons = [[
+            InlineKeyboardButton('Back', callback_data='help_3')
+        ]]
+        reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            '__Get Current date and time of any given timezone.__'
+            '\n\nUsage Example: `/time Asia/Kolkata` - To get current time and date of Asia/Kolkata'
+            '\nRefer this list for [full list](https://telegra.ph/Country-Codes-07-13) of available timezones.',
+            reply_markup=reply_markup,
+            disable_web_page_preview=True,
+            parse_mode='md'
+        )
+    
     elif query.data == "txtts":
         buttons = [[
             InlineKeyboardButton('Back', callback_data='help_3')
