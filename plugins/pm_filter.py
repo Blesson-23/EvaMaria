@@ -932,7 +932,7 @@ async def auto_filter(client, msg, spoll=False):
     
     imdb = await get_poster(search, file=(files[0]).file_name) if settings["imdb"] else None
     btn.insert(0, [InlineKeyboardButton('🎈 INFO 🎈', callback_data='useless_info'), InlineKeyboardButton('📺 REQUEST 📺', callback_data='useless_request')])
-    TEMPLATE = settings['template']
+    TEMPLATE = IMDB_TEMPLATE
     _name = imdb['title'] if imdb else search
     btn.insert(0, [InlineKeyboardButton(_name, callback_data='null')])
     if imdb:
