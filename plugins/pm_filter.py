@@ -374,7 +374,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     caption=f_caption,
                     protect_content=True if ident == "filep" else False 
                 )
-                await query.answer('Check PM, I have sent files in pm', show_alert=True)
+                if query.message.chat.type != "private":
+                    await query.answer('Check PM, I have sent files in pm', show_alert=True)
+                else:
+                    await query.answer()
         except UserIsBlocked:
             await query.answer('Unblock the bot mahn !', show_alert=True)
         except PeerIdInvalid:
@@ -982,7 +985,7 @@ async def auto_filter(client, msg, spoll=False):
             logger.exception(e)
             await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
     else:"""
-    await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn))
+    await message.reply_text(cap, reply_markup=InlineKeyboardMarkup(btn), disable_web_page_preview=True)
     if spoll:
         await msg.message.delete()
 
