@@ -169,7 +169,7 @@ async def start(client, message):
                 ],[
                 InlineKeyboardButton('🔎 Search', switch_inline_query_current_chat='')
                 ],[
-                InlineKeyboardButton('🐳Help', callback_data='help'),
+                InlineKeyboardButton('🌈Help', callback_data='help'),
                 InlineKeyboardButton('📣about', callback_data='about')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
@@ -211,7 +211,7 @@ async def start(client, message):
                 ],[
                 InlineKeyboardButton('🔎 Search', switch_inline_query_current_chat='')
                 ],[
-                InlineKeyboardButton('🐳Help', callback_data='help'),
+                InlineKeyboardButton('🌈Help', callback_data='help'),
                 InlineKeyboardButton('📣about', callback_data='about')
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
