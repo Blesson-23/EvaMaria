@@ -54,7 +54,7 @@ __° /info - User info
 
 
 
-    ABOUT_TXT = """ 💎𝐌𝐲 𝐍𝐚𝐦𝐞 :ᴋᴜᴛᴛɪᴍᴀᴀʟ💎
+    ABOUT_TXT = """ 💎𝐌𝐲 𝐍𝐚𝐦𝐞 :ᴋᴜᴛᴛɪᴍᴀᴀʟU🥰
 
 ☆ 𝐂𝐫𝐞𝐚𝐭𝐨𝐫 :<a href=http://t.me/blesson_3> ᴍʀ ᴍᴀᴋʀɪ [ᴏɴʟɪɴᴇ]</a>
 
