@@ -475,7 +475,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
-            sticker="CAACAgQAAxkBAAEJuwhiuAxczaWIRVn85viiEogiC9nCGAAChgsAAmJWoFJF-tufwKSDax4E",
+            sticker="CAACAgUAAxkBAAEEQQ9i3EIErlZrKG88de5j6GyQHLoj-QAClgcAAi0liVc7XFJmXff18B4E",
             chat_id=query.message.chat.id,
             reply_markup=reply_markup
            # parse_mode='html'
@@ -489,7 +489,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
-            sticker="CAACAgQAAxkBAAEJuw5iuAzcwvvunyAb7-vJkWhyD6fSBAACdAwAAiQ5AAFQ2rvUM6Wj_woeBA",
+            sticker="CAACAgQAAxkBAAEEQQZi3EHi0eZaRpumE2IC_lMwPgzlmgACBw0AAj-juVCT8yqh61cGiB4E",
             chat_id=query.message.chat.id,
             reply_markup=reply_markup
             #parse_mode='html'
@@ -504,7 +504,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await client.send_sticker(
-            sticker="CAACAgQAAxkBAAEJuwdiuAxDkWWvzFRNz7utSJVpBeWaBgACTQ4AApY7AAFQaesqqBlP5eseBA",
+            sticker="CAACAgQAAxkBAAEEQRxi3ELKpcbrAnAlYvLfbbELlxM_rQACtAsAAgs7uVCC8EivlC8jch4E",
             chat_id=query.message.chat.id,
             reply_markup=reply_markup
             #parse_mode='html'
