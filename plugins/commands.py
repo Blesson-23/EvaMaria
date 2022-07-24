@@ -165,7 +165,7 @@ async def start(client, message):
             await client.send_message(LOG_CHANNEL, script.LOG_TEXT_P.format(message.from_user.id, message.from_user.mention))
         if len(message.command) != 2:
             buttons = [[
-                InlineKeyboardButton('💎𝘈𝘋𝘋 𝘔𝘌 𝘛𝘖 𝘠𝘖𝘜𝘙 𝘎𝘙𝘖𝘜𝘗', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+                InlineKeyboardButton('⬛️𝘈𝘋𝘋 𝘔𝘌 𝘛𝘖 𝘠𝘖𝘜𝘙 𝘎𝘙𝘖𝘜𝘗', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
                 InlineKeyboardButton('🔎 Search', switch_inline_query_current_chat='')
                 ],[
@@ -174,7 +174,7 @@ async def start(client, message):
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             await message.reply_sticker(
-                sticker="CAACAgUAAxkBAAEEQQ9i3EIErlZrKG88de5j6GyQHLoj-QAClgcAAi0liVc7XFJmXff18B4E",
+                sticker="CAACAgUAAxkBAAEERyZi3Upr-BUjsGdqsFfsueEaGIIqrgACoAUAAuKI6FZnTvIkiceW3x4E",
                # caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
                 reply_markup=reply_markup
                 #parse_mode='html'
@@ -207,7 +207,7 @@ async def start(client, message):
             return
         if len(message.command) == 2 and message.command[1] in ["subscribe", "error", "okay", "help"]:
             buttons = [[
-                InlineKeyboardButton(' 💎𝘈𝘋𝘋 𝘔𝘌 𝘛𝘖 𝘠𝘖𝘜𝘙 𝘎𝘙𝘖𝘜𝘗 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+                InlineKeyboardButton(' 🟥𝘈𝘋𝘋 𝘔𝘌 𝘛𝘖 𝘠𝘖𝘜𝘙 𝘎𝘙𝘖𝘜𝘗 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
                 ],[
                 InlineKeyboardButton('🔎 Search', switch_inline_query_current_chat='')
                 ],[
@@ -216,7 +216,7 @@ async def start(client, message):
             ]]
             reply_markup = InlineKeyboardMarkup(buttons)
             await message.reply_sticker(
-                sticker="CAACAgUAAxkBAAEEQQ9i3EIErlZrKG88de5j6GyQHLoj-QAClgcAAi0liVc7XFJmXff18B4E",
+                sticker="CAACAgUAAxkBAAEERyZi3Upr-BUjsGdqsFfsueEaGIIqrgACoAUAAuKI6FZnTvIkiceW3x4E",
               #  caption=script.START_TXT.format(message.from_user.mention, temp.U_NAME, temp.B_NAME),
                 reply_markup=reply_markup
                 #parse_mode='html'
