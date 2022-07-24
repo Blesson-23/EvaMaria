@@ -67,7 +67,7 @@ async def next_page(bot, query: CallbackQuery):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🔷 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"⬛️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
@@ -76,7 +76,7 @@ async def next_page(bot, query: CallbackQuery):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🔷 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
+                    text=f"⬛️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{query.from_user.id}'
                 ),
             ]
             for file in files
@@ -466,7 +466,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "start":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('💎𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('🟥𝗔𝗗𝗗 𝗠𝗘 𝗧𝗢 𝗬𝗢𝗨𝗥 𝗚𝗥𝗢𝗨𝗣 ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
         ], [
             InlineKeyboardButton('Search🔎', switch_inline_query_current_chat='')
         ], [
@@ -497,7 +497,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
     elif query.data == "about":
         await query.message.delete()
         buttons = [[
-            InlineKeyboardButton('🥜ᴀʙᴏᴜᴛ', callback_data='button')
+            InlineKeyboardButton('🟥ᴀʙᴏᴜᴛ', callback_data='button')
             ],[
             InlineKeyboardButton('🏘️Home', callback_data='start'),
             InlineKeyboardButton('🚪Close', callback_data='close_data')
@@ -905,7 +905,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🔷 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
+                    text=f"⬛️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 ),
             ]
             for file in files
@@ -914,7 +914,7 @@ async def auto_filter(client, msg, spoll=False):
         btn = [
             [
                 InlineKeyboardButton(
-                    text=f"🔷 [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
+                    text=f"⬛️ [{get_size(file.file_size)}] {file.file_name}", callback_data=f'{pre}#{file.file_id}#{msg.from_user.id if msg.from_user is not None else 0}'
                 ),
             ]
             for file in files
