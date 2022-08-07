@@ -88,7 +88,7 @@ async def who_is(client, message):
             chat_member_p = await message.chat.get_member(from_user.id)
             joined_date = datetime.fromtimestamp(
                 chat_member_p.joined_date or time.time()
-            ).strftime("%Y.%m.%d %H:%M:%S")
+            ).strftime("%d/%m/%Y, %H:%M:%S")
             message_out_str += (
                 "<b>➲Joined this Chat on:</b> <code>"
                 f"{joined_date}"
@@ -192,7 +192,7 @@ async def imdb_callback(bot: Client, quer_y: CallbackQuery):
             plot = imdb['plot'],
             rating = imdb['rating'],
             url = imdb['url'],
-            time=datetime.now(timezone('Asia/Kolkata')).strftime("%m/%d/%Y, %H:%M:%S"),
+            time=datetime.now(timezone('Asia/Kolkata')).strftime("%d/%m/%Y, %H:%M:%S"),
             **locals()
         )
     else:

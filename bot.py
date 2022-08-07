@@ -1,6 +1,6 @@
 import logging
 import logging.config
-
+import time
 # Get logging configurations
 logging.config.fileConfig('logging.conf')
 logging.getLogger().setLevel(logging.INFO)
@@ -17,6 +17,7 @@ from utils import temp
 class Bot(Client):
 
     def __init__(self):
+        self.start_time = None
         super().__init__(
             session_name=SESSION,
             api_id=API_ID,
@@ -34,6 +35,7 @@ class Bot(Client):
         await super().start()
         await Media.ensure_indexes()
         me = await self.get_me()
+        self.start_time = time.time()
         temp.ME = me.id
         temp.U_NAME = me.username
         temp.B_NAME = me.first_name

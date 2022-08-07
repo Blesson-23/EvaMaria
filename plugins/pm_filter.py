@@ -968,7 +968,7 @@ async def auto_filter(client, msg, spoll=False):
             plot=imdb['plot'],
             rating=imdb['rating'],
             url=imdb['url'],
-            time=datetime.now(timezone('Asia/Kolkata')).strftime("%m/%d/%Y, %H:%M:%S"),
+            time=datetime.now(timezone('Asia/Kolkata')).strftime("%d/%m/%Y, %H:%M:%S"),
             **locals()
         )
     else:
@@ -1040,7 +1040,7 @@ async def advantage_spell_chok(msg):
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
     await msg.reply("I couldn't find anything related to that\nDid you mean any one of these?",
-                    reply_markup=InlineKeyboardMarkup(btn))
+                    reply_markup=InlineKeyboardMarkup(btn), quote=True)
 
 async def manual_filters(client, message, text=False):
     group_id = message.chat.id

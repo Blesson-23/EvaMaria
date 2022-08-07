@@ -55,7 +55,7 @@ async def save_group(bot, message):
                     except:
                         pass
                 chatmem = await message.chat.get_member(message.from_user.id)
-                date = datetime.fromtimestamp(chatmem.joined_date).strftime("%m/%d/%Y, %H:%M:%S")
+                date = datetime.fromtimestamp(chatmem.joined_date).strftime("%d/%m/%Y, %H:%M:%S")
                 temp.MELCOW['welcome'] = await message.reply(f"<b>Hey , {u.mention}, Welcome to {message.chat.title}</b>\n\nJoined on: {date}")
 
 
